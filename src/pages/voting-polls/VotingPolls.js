@@ -2,8 +2,8 @@ import React from "react";
 
 function VotingPolls() {
     return (
-        <div>
-           <h1 style={{color:'black'}}>Voting Polls</h1>
+        <div className="bg-global-gradient">
+           <h1 style={{color:'white'}}>Voting Polls</h1>
         </div>
     )
 }

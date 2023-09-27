@@ -12,15 +12,18 @@ const Nav = () => {
     };
   
     return (
-      <nav className="text-white flex justify-end" style={{ background: 'rgb(0,5,24)', background: '-moz-linear-gradient(167deg, rgba(0,5,24,1) 0%, rgba(13,12,12,1) 100%)', background: '-webkit-linear-gradient(167deg, rgba(0,5,24,1) 0%, rgba(13,12,12,1) 100%)', background: 'linear-gradient(167deg, rgba(0,5,24,1) 0%, rgba(13,12,12,1) 100%)', filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#000518",endColorstr="#0d0c0c",GradientType=1)' }}>
+      <nav 
+        className="text-xs text-white flex justify-end"
+        style={{ background: 'rgb(0,5,24)', background: '-moz-linear-gradient(167deg, rgba(0,5,24,1) 0%, rgba(13,12,12,1) 100%)', background: '-webkit-linear-gradient(167deg, rgba(0,5,24,1) 0%, rgba(13,12,12,1) 100%)', background: 'linear-gradient(167deg, rgba(0,5,24,1) 0%, rgba(13,12,12,1) 100%)', filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#000518",endColorstr="#0d0c0c",GradientType=1)' }}
+      >
         <ul>
           <li>
             {user ? (
               <div className="flex items-center space-x-2 mr-10 p-0.5">
                   <span className='text-white'>{user.displayName}: </span>
-                  <Link to="/my-polls" className='bg-navbg2 rounded-md'>Minhas Votações</Link>
-                  <Link to="/voting-polls" className='bg-navbg2 rounded-md'>Votações que Participo</Link>
-                  <button onClick={handleLogout} className='bg-navbg2 rounded-md'>Sair</button>
+                  <Link to="/my-polls" className='bg-navbg2 hover:bg-titlechange rounded-md'>Minhas Votações</Link>
+                  <Link to="/voting-polls" className='bg-navbg2 hover:bg-titlechange rounded-md'>Votações que Participo</Link>
+                  <button onClick={handleLogout} className='bg-navbg2 hover:bg-titlechange rounded-md'>Sair</button>
               </div>
 
             ) : (

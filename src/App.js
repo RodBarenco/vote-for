@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useAuth, AuthProvider} from './auth/Auth'; 
 
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
@@ -49,6 +50,7 @@ function App() {
           <Route path="/poll/:id" element={<Poll />} />
         )}
       </Routes>
+      <Footer/>
     </Router>
   );
 }

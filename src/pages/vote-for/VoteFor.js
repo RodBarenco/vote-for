@@ -2,7 +2,7 @@ import React from "react";
 
 function VoteFor() {
     return (
-        <div>
+        <div className="bg-global-gradient">
             Vote for
         </div>
     )

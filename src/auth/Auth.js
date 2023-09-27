@@ -18,16 +18,24 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const signInWithGoogle = async () => { // Use async/await para esperar a autenticação
+  const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
-      localStorage.setItem('user', JSON.stringify(result.user));
-      console.log(result.user);
+      const { uid, displayName } = result.user;
+      
+      // Crie um objeto user com as informações necessárias
+      const user = {
+        id: uid,
+        displayName: displayName,
+      };
+  
+      setUser(user);
+      localStorage.setItem('user', JSON.stringify(user));
     } catch (error) {
       console.error("Erro ao fazer login com o Google:", error);
     }
   };
+  
 
   const logout = async () => {
     try {

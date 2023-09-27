@@ -2,7 +2,7 @@ import React from "react";
 
 function Poll() {
     return (
-        <div>
+        <div className="bg-global-gradient">
            Poll
         </div>
     )
