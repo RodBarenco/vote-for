@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Preview from "../../components/Previwe";
+import { Timestamp, addDoc, collection } from 'firebase/firestore';
+import {  ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { db, storage } from '../../firebase-config';
+import { useAuth } from "../../auth/Auth"; 
+
 
 function Admin() {
   const [newPollName, setNewPollName] = useState("");
@@ -9,16 +14,56 @@ function Admin() {
   const [titleColor, setTitleColor] = useState("#6363ff"); // Cor do título
   const [textColor, setTextColor] = useState("#ffffff");   // Cor do texto comum
   const [bgColor, setBgColor] = useState("#000000");       // Cor do background
-  const [coverPhoto, setCoverPhoto] = useState(null);      // Foto de capa (arquivo)
-
-  const handleCreatePoll = () => {
-    // Lógica para criar uma nova votação
-    // Você pode enviar os dados para o servidor aqui
-  };
+  const [coverPhoto, setCoverPhoto] = useState(null); 
+  const { user, signInWithGoogle } = useAuth();      // Foto de capa (arquivo)
 
   useEffect(() => {
 
   }, [titleColor, textColor, bgColor, coverPhoto]);
+
+  // handle new poll --------------------------------------------------------------//
+
+  const postsCollectionRef = collection(db, 'poll');
+  const storageRef = ref(storage, `/img/${coverPhoto}`);
+
+  const handleCreatePoll = async () => {
+
+    let imageUrl = null;
+    if (!user) {
+      signInWithGoogle();
+      return;     
+    } else {
+      try {
+        await uploadBytes(storageRef, coverPhoto);
+        console.log('Upload concluído com sucesso.');
+        imageUrl = await getDownloadURL(storageRef);
+      } catch (error) {
+        console.error('Erro no upload: coverPhoto', error);
+      }
+    }
+
+    const poll = ({
+      author: {
+        id: user.id,
+        name: user.displayName
+      },
+      participants: {},
+      candidates: {},
+      name: newPollName,
+      summary: newPollSummary,
+      startDate: startDate,
+      endDate: endDate,
+      titleColor: titleColor,
+      textColor: textColor,
+      bgColor: bgColor,
+      coverPhoto: imageUrl
+    })
+    await addDoc(postsCollectionRef, poll);
+    console.log("Publicação feita ccom sucesso!")
+
+  };
+
+  //--------------------------------------------------------------------------------------
 
   return (
     <div className="flex flex-col items-center h-auto p-8 bg-global-gradient text-white text-sm border-2 overflow-x-hidden">
@@ -149,7 +194,7 @@ function Admin() {
       ela ficará ao topo da página de votação.</div>
     {/* --------------------------------------------------------------------------------------------------------------------------- */}
     <div className="w-full h-px bg-title mt-4"></div>
-    <div className="text-title text-3xl mb-4 mt-4"> 5 - PREVIWE E CRIAR!</div>
+    <div className="text-title text-3xl mb-4 mt-4"> 5 - PREVIEW E CRIAR!</div>
       <div className="flex flex-col items-center space-x-2 w-8/12">
         <div className="form-group space-x-2">
         <div className="border-2 rounded-lg">
