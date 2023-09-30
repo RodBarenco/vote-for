@@ -4,6 +4,10 @@ import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import {  ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../../firebase-config';
 import { useAuth } from "../../auth/Auth"; 
+import GenerateRandomPassword from "../../utils/RandPass";
+import generateUniqueId from "../../utils/RandId";
+import { useNavigate } from "react-router-dom";
+import { RaceBy } from "@uiball/loaders";
 
 
 function Admin() {
@@ -15,19 +19,23 @@ function Admin() {
   const [textColor, setTextColor] = useState("#ffffff");   // Cor do texto comum
   const [bgColor, setBgColor] = useState("#000000");       // Cor do background
   const [coverPhoto, setCoverPhoto] = useState(null); 
-  const { user, signInWithGoogle } = useAuth();      // Foto de capa (arquivo)
+  const { user, signInWithGoogle } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);     
 
   useEffect(() => {
 
   }, [titleColor, textColor, bgColor, coverPhoto]);
 
   // handle new poll --------------------------------------------------------------//
+  const navigate = useNavigate();
 
   const postsCollectionRef = collection(db, 'poll');
-  const storageRef = ref(storage, `/img/${coverPhoto}`);
+  const coverPhotId = generateUniqueId(); 
+  const storageRef = ref(storage, `/img/${coverPhotId}`);
 
   const handleCreatePoll = async () => {
-
+    setIsLoading(true);
+    window.scrollTo(0, 0);
     let imageUrl = null;
     if (!user) {
       signInWithGoogle();
@@ -56,17 +64,27 @@ function Admin() {
       titleColor: titleColor,
       textColor: textColor,
       bgColor: bgColor,
-      coverPhoto: imageUrl
+      coverPhoto: imageUrl,
+      password: GenerateRandomPassword()
     })
-    await addDoc(postsCollectionRef, poll);
+    const docRef = await addDoc(postsCollectionRef, poll);
     console.log("Publicação feita ccom sucesso!")
+    setIsLoading(false);
+    
 
+    navigate(`/poll-admin/${docRef.id}`);
   };
 
   //--------------------------------------------------------------------------------------
 
   return (
     <div className="flex flex-col items-center h-auto p-8 bg-global-gradient text-white text-sm border-2 overflow-x-hidden">
+       {isLoading ? (
+        <div className="h-screen justify-center">
+          <RaceBy size={95} color="#993399" />
+        </div>
+      ) : (
+      <div>
       <div className="text-title text-center text-2xl">Página de criação</div>
       <div className="container mt-8 p-6 rounded-xl flex flex-col items-center">
       <div className="text-xs"> OBS: Você está na página de criação de votações, preencha os dados com atenção. Todas as informações 
@@ -222,9 +240,9 @@ function Admin() {
       participantes, além de um link e uma senha de acesso para quem for ingressar na votação dessa maneira.</div>
 
       </div>
-
+      </div>
+        )}
     </div>
-  );
-}
+    )}
 
 export default Admin;

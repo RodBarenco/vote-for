@@ -40,9 +40,9 @@ function App() {
           <Route path="/voting-polls" element={<VotingPolls />} />
         )}
         {user == null ? (
-          <Route path="/poll-adm/:id" element={<Login />} />
+          <Route path="/poll-admin/:id" element={<Login />} />
         ) : (
-          <Route path="/poll-adm/:id" element={<PollAdm />} />
+          <Route path="/poll-admin/:id" element={<PollAdm />} />
         )}
         {user == null ? (
           <Route path="/poll/:id" element={<Login />} />
