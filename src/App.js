@@ -15,10 +15,9 @@ import MyPolls from './pages/my-polls/MyPolls';
 import VotingPolls from './pages/voting-polls/VotingPolls';
 
 function App() {
-  const { user } = useAuth(); // Use o hook useAuth para acessar o estado do usuário
+  const { user } = useAuth(); 
 
   useEffect(() => {
-    // Faça o que precisar com o estado do usuário aqui
   }, [user]);
 
   return (

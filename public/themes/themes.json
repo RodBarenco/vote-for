@@ -1,0 +1,32 @@
+{
+  "halloween": {
+    "titleColor": "rgb(205, 121, 4)",
+    "textColor": "rgb(215, 255, 194)",
+    "bgColor": "rgb(0, 0, 0)",
+    "coverPhoto": "/themes/halloween.jpeg"
+  },
+  "carnaval": {
+    "titleColor": "rgb(243, 242, 241)",
+    "textColor": "rgb(245, 203, 50)",
+    "bgColor": "rgb(245, 77, 77)",
+    "coverPhoto": "/themes/carnaval.jpg"
+  },
+  "politico": {
+    "titleColor": "rgb(230, 179, 179)",
+    "textColor": "rgb(164, 201, 249)",
+    "bgColor": "rgb(109, 55, 55)",
+    "coverPhoto": "/themes/politico.jpeg"
+  },
+  "estudantil": {
+    "titleColor": "rgb(5, 5, 5)",
+    "textColor": "rgb(15, 136, 138)",
+    "bgColor": "rgb(171, 156, 156)",
+    "coverPhoto": "/themes/escola.jpeg"
+  },
+  "praia": {
+    "titleColor": "rgb(52, 223, 212)",
+    "textColor": "rgb(215, 255, 194)",
+    "bgColor": "rgb(224, 214, 163)",
+    "coverPhoto": "/themes/praia.jpeg"
+  }
+}

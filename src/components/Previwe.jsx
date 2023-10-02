@@ -21,7 +21,7 @@ function Preview({ newPollName, newPollSummary, titleColor, textColor, bgColor, 
   }, [coverPhoto]);
 
   return (
-    <div style={previewStyle} className="border rounded-lg p-4 h-64 w-60">
+    <div style={previewStyle} className="border rounded-lg p-4 h-72 w-60">
       {placeholderImage && (
         <div
           className="bg-cover bg-center w-full h-10"
@@ -29,10 +29,10 @@ function Preview({ newPollName, newPollSummary, titleColor, textColor, bgColor, 
         ></div>
       )}
 
-      <div className="text-xl" style={{ color: titleColor }}>
+      <div className="text-xl" style={{ color: titleColor, wordWrap: 'break-word' }}>
         {newPollName}
       </div>
-      <div className="text-sm" style={{ color: textColor }}>
+      <div className="text-sm" style={{ color: textColor, wordWrap: 'break-word' }}>
         {newPollSummary}
       </div>
       <div className="w-full h-px bg-gray-900 mt-4"></div>
