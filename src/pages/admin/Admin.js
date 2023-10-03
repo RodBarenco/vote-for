@@ -206,7 +206,7 @@ function Admin() {
         </div>
       ) : (
 
-      <div>
+      <div className="w-11/12">
       <div className="text-title text-center text-2xl">Página de criação</div>
       <div className="container mt-8 p-6 rounded-xl flex flex-col items-center">
       <div className="text-xs"> OBS: Você está na página de criação de votações, preencha os dados com atenção. Todas as informações 
@@ -275,10 +275,11 @@ function Admin() {
         {/* --------------------------------------------------------------------------------------------------------------------------- */}
         <div className="w-full h-px bg-title mt-4"></div>
           <div className="text-title text-3xl mb-4 mt-4"> 3 - APARÊNCIA</div>
-          <div className="flex flex-row items-center space-x-2 mt-4">
-
-          <div className="form-group space-x-2">
-            <label htmlFor="titleColor">Cor das Letras de Título:</label>
+          <div className="flex flex-col items-center space-x-2">
+          
+          <div className="flex flex-row space-x-8 mr-4">
+          <div className="form-group flex flex-col">
+            <label htmlFor="titleColor">Título:</label>
               <input
                 type="color"
                 className="form-control rounded-md"
@@ -288,8 +289,8 @@ function Admin() {
               />
           </div>
 
-          <div className="form-group space-x-2">
-            <label htmlFor="textColor">Cor do Texto Comum:</label>
+          <div className="form-group flex flex-col">
+            <label htmlFor="textColor">Texto:</label>
              <input
                type="color"
                className="form-control rounded-md"
@@ -299,8 +300,8 @@ function Admin() {
             />
           </div>
 
-          <div className="form-group space-x-2">
-            <label htmlFor="bgColor">Cor do Background:</label>
+          <div className="form-group flex flex-col">
+            <label htmlFor="bgColor">Fundo:</label>
               <input
                 type="color"
                 className="form-control rounded-md"
@@ -309,15 +310,14 @@ function Admin() {
                 onChange={(e) => setBgColor(e.target.value)}
             />
           </div>
+          </div>
 
-        </div>
-
-        {/* Adiciona a seleção de temas pré-selecionados usando checkboxes */}
-        <div className="mt-4">
-         <div className="text-title text-lg">Temas Pré-selecionados:</div>
-           <div className="flex space-x-4">
-           {Object.keys(themesData).map((themeName) => (
-             <label key={themeName} className="flex items-center space-x-2">
+          {/* Adiciona a seleção de temas pré-selecionados usando checkboxes */}
+          <div className="ml-8 border-2 p-4 rounded-md mt-4">
+            <div className="text-title text-lg font-semibold">Temas Pré-selecionados:</div>
+             <div className="flex flex-col ">
+             {Object.keys(themesData).map((themeName) => (
+              <label key={themeName} className="flex items-center">
                <input
                  type="checkbox"
                  value={themeName}
@@ -328,7 +328,10 @@ function Admin() {
          </label>
          ))}
         </div>
+        <div className="text-xs mt-2"> Observe o resultado na seção PREVIEW.</div>
        </div>
+
+        </div>
 
         <div className="text-xs mt-16">A aparência básica da página não poderá ser alterada após sua criação, ela será
          composta pelas cores que você escolher aqui. Também disponibilizamos temas pré-selecionados como Halloween,
