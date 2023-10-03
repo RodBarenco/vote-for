@@ -208,6 +208,7 @@ function PollAdm() {
   
     
   //-----------------------------------------------------------------------------
+  console.log(`${link}?passforvote=${password}`)
 
   return  (
     <div className="flex flex-col items-center bg-global-gradient min-h-screen text-white text-sm">

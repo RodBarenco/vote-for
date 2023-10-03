@@ -18,14 +18,24 @@ function Login() {
       } else if (window.location.pathname.includes("poll-adm")) {
         redirectTo = window.location.pathname; // Mantém a mesma rota
       } else if (window.location.pathname.includes("poll")) {
-        redirectTo = window.location.pathname; // Mantém a mesma rota
+        // Verifica se há um parâmetro "passforvote" na URL atual
+        const currentSearchParams = new URLSearchParams(window.location.search);
+        const passforvoteParam = currentSearchParams.get("passforvote");
+        
+        // Cria a URL de redirecionamento com base na presença do parâmetro
+        if (passforvoteParam) {
+          redirectTo = `${window.location.pathname}?passforvote=${passforvoteParam}`;
+        } else {
+          redirectTo = window.location.pathname; // Mantém a mesma rota
+        }
       } else {
         redirectTo = "/"; // Página inicial padrão
       }
-
+  
       navigate(redirectTo);
     });
   };
+  
 
   return (
     <div className="bg-global-gradient flex flex-col items-center">

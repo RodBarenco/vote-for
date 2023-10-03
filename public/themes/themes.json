@@ -12,20 +12,20 @@
     "coverPhoto": "/themes/carnaval.jpg"
   },
   "politico": {
-    "titleColor": "rgb(230, 179, 179)",
-    "textColor": "rgb(164, 201, 249)",
-    "bgColor": "rgb(109, 55, 55)",
+    "titleColor": "rgb(250, 60, 60)",
+    "textColor": "rgb(208, 208, 208)",
+    "bgColor": "rgb(50, 5, 5)",
     "coverPhoto": "/themes/politico.jpeg"
   },
   "estudantil": {
     "titleColor": "rgb(5, 5, 5)",
-    "textColor": "rgb(15, 136, 138)",
+    "textColor": "rgb(12, 49, 198)",
     "bgColor": "rgb(171, 156, 156)",
     "coverPhoto": "/themes/escola.jpeg"
   },
   "praia": {
-    "titleColor": "rgb(52, 223, 212)",
-    "textColor": "rgb(215, 255, 194)",
+    "titleColor": "rgb(5, 128, 114)",
+    "textColor": "rgb(2, 74, 240)",
     "bgColor": "rgb(224, 214, 163)",
     "coverPhoto": "/themes/praia.jpeg"
   }

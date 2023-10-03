@@ -215,14 +215,14 @@ function Admin() {
       </div>
   {/*--------------------------------------------------------------------------------------------------------------------------*/}
         <div className="w-full h-px bg-title mt-4"></div>
-        <div className="text-title text-3xl mb-4 mt-4"> 1 - INFORMAÇÕES BÁSICAS</div>  
-        <div className="w-full  flex-col space-x-4 mt-4">      
+        <div className="text-title text-3xl mb-4 mt-4"> 1 - INFORMAÇÕES </div>  
+        <div className="w-full  flex-col space-x-2 mt-4">      
 
         <div className="form-group space-x-2 mt-4 flex flex-row items-center w-full">
-          <label htmlFor="newPollName">Nome da Nova Votação:</label>
+          <label htmlFor="newPollName">Nome da Votação:</label>
           <input
             type="text"
-            className="form-control rounded-md bg-slate-900 border-2 w-5/12"
+            className="form-control rounded-md bg-slate-900 border-2 w-56"
             id="newPollName"
             value={newPollName}
             onChange={(e) => setNewPollName(e.target.value)}
@@ -235,7 +235,7 @@ function Admin() {
             <label htmlFor="startDate">Data de Início:</label>
             <input
               type="date"
-              className="form-control rounded-md bg-slate-900 border-2"
+              className="form-control rounded-md bg-slate-900 border-2 w-18"
               id="startDate"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
@@ -246,7 +246,7 @@ function Admin() {
             <label htmlFor="endDate">Data de Término:</label>
             <input
               type="date"
-              className="form-control rounded-md bg-slate-900 border-2"
+              className="form-control rounded-md bg-slate-900 border-2 w-18"
               id="endDate"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
