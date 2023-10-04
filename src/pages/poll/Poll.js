@@ -36,7 +36,7 @@ function Poll() {
       fetchPollData();
     }, [id]); 
 
-    if (!pollData) {
+    if (pollData === null) {
       // Exibe uma mensagem de carregamento enquanto os dados estão sendo buscados
       return <div className="bg-global-gradient h-screen text-white">Carregando...</div>;
     }
@@ -133,7 +133,6 @@ function Poll() {
   };
 
 //---------------------------------------------------------------------------------------  
-
   return (
     <div 
     style={{
@@ -185,11 +184,12 @@ function Poll() {
               borderRadius: "6px",
             }}
             >
-            <div key={index} style={{
-              borderColor: participant.votedfor === candidate.id ? pollData.titleColor : 'transparent',
-              borderWidth: participant.votedfor === candidate.id ? '2px' : '0',
-              borderRadius: participant.votedfor === candidate.id ? '4px' : '0',
-            }}>
+              <div key={index} style={{
+                  borderColor: participant && participant.votedfor === candidate.id ? pollData.titleColor : 'transparent',
+                  borderWidth: participant && participant.votedfor === candidate.id ? '2px' : '0',
+                  borderRadius: participant && participant.votedfor === candidate.id ? '4px' : '0',
+               }}>
+
               <div className="text-xl font-medium ml-1" style={{ color: pollData.textColor }}>
                 {candidate.name}
               </div>
