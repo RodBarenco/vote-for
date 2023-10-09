@@ -268,7 +268,7 @@ function PollAdm() {
        <p>Senha da Pesquisa: {password}</p>
       </div>
       {/* Renderize o QR Code com o link e senha no corpo */}
-      <div className="mt-4 qr-code-container border-2 w-40 h-40 p-3">
+      <div className="mt-4 qr-code-container border-2 border-title w-40 h-40 p-3 bg-white">
        <div>
          <QRCode value={`${link}?passforvote=${password}`} />
        </div>
